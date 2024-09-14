@@ -1,0 +1,46 @@
+permalink index.html
+buildHtml
+
+title ZOMBO
+zombo.css
+
+font-awesome.min.css
+metaTags
+
+center
+br
+zombocom.png
+ width 1199
+ height 217
+ // alt="Zombocom"
+ // longdesc="http://zombo.com"
+
+center
+*
+ class animate-flicker
+<img src="pngwheel.png" class="rotate thefade">
+
+zombo_words.mp3
+ loop
+
+<button id="button">
+  <i class="fa fa-volume-up"></i>
+  </button>
+
+script
+ const button = document.querySelector("#button")
+ const icon = document.querySelector("#button > i")
+ const audio = document.querySelector("audio")
+ button.addEventListener("click", () => {
+  if (audio.paused) {
+    audio.volume = 0.2;
+    audio.play();
+    icon.classList.remove('fa-volume-up');
+    icon.classList.add('fa-volume-off');
+  } else {
+    audio.pause();
+    icon.classList.remove('fa-volume-off');
+    icon.classList.add('fa-volume-up');
+  }
+  button.classList.add("fade");
+ });
