@@ -5,7 +5,6 @@ baseUrl https://zombo.breck.lol/
 
 title ZOMBO
 zombo.css
-
 font-awesome.min.css
 metaTags
 
@@ -14,35 +13,31 @@ br
 zombocom.png
  width 1199
  height 217
- // alt="Zombocom"
- // longdesc="http://zombo.com"
 
 center
 *
  class animate-flicker
-<img src="pngwheel.png" class="rotate thefade">
+img
+ src pngwheel.png
+ class rotate thefade
 
 zombo_words.mp3
  loop
 
-<button id="button">
-  <i class="fa fa-volume-up"></i>
-  </button>
+button
+ id button
+ span
+  class fa fa-volume-up
 
 script
  const button = document.querySelector("#button")
- const icon = document.querySelector("#button > i")
+ const icon = button.firstElementChild
  const audio = document.querySelector("audio")
  button.addEventListener("click", () => {
-  if (audio.paused) {
-    audio.volume = 0.2;
-    audio.play();
-    icon.classList.remove('fa-volume-up');
-    icon.classList.add('fa-volume-off');
-  } else {
-    audio.pause();
-    icon.classList.remove('fa-volume-off');
-    icon.classList.add('fa-volume-up');
-  }
-  button.classList.add("fade");
- });
+  const play = audio.paused
+  if (play) audio.volume = 0.2
+  audio[play ? "play" : "pause"]()
+  icon.classList.toggle("fa-volume-up", !play)
+  icon.classList.toggle("fa-volume-off", play)
+  button.classList.add("fade")
+ })
