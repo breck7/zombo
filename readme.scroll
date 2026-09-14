@@ -1,6 +1,8 @@
 permalink index.html
 buildHtml
 
+baseUrl https://zombo.breck.lol/
+
 title ZOMBO
 zombo.css
 
