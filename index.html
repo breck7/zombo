@@ -21,32 +21,26 @@
  <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
-<center><p id="particle11" class="scrollParagraph"></p>
+<center><p id="particle10" class="scrollParagraph"></p>
 <br>
 <figure class="scrollCaptionedFigure" style="width:1199px; margin: auto;"><a href="zombocom.png" target="_blank"  ><img src="zombocom.png" width="1199" height="217" loading="lazy"></a></figure>
 </center>
-<center><p id="particle15" class="scrollParagraph"></p>
-<p id="particle16" class="animate-flicker" class="animate-flicker"></p>
-<img src="pngwheel.png" class="rotate thefade">
+<center><p id="particle14" class="scrollParagraph"></p>
+<p id="particle15" class="animate-flicker" class="animate-flicker"></p>
+<img id="particle16" src="pngwheel.png" class="rotate thefade" class="rotate thefade" />
 </center>
 <audio controls loop><source src="zombo_words.mp3" type="audio/mpeg"></audio>
-<button id="button"> <i class="fa fa-volume-up"></i>
- </button>
+<button id="button" ><span id="particle1" class="fa fa-volume-up" class="fa fa-volume-up"></span></button>
 <script>const button = document.querySelector("#button")
-const icon = document.querySelector("#button > i")
+const icon = button.firstElementChild
 const audio = document.querySelector("audio")
 button.addEventListener("click", () => {
- if (audio.paused) {
-   audio.volume = 0.2;
-   audio.play();
-   icon.classList.remove('fa-volume-up');
-   icon.classList.add('fa-volume-off');
- } else {
-   audio.pause();
-   icon.classList.remove('fa-volume-off');
-   icon.classList.add('fa-volume-up');
- }
- button.classList.add("fade");
-});</script>
+ const play = audio.paused
+ if (play) audio.volume = 0.2
+ audio[play ? "play" : "pause"]()
+ icon.classList.toggle("fa-volume-up", !play)
+ icon.classList.toggle("fa-volume-off", play)
+ button.classList.add("fade")
+})</script>
 </body>
 </html>
